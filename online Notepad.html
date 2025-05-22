@@ -3,8 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online notepad - Easy to use, no installation required. Save, edit and share your notes online.">
-    <title>Online Notepad - Free and Responsive Web Notepad</title>
+
+    <!-- SEO: Core Meta Tags -->
+    <title>Online Notepad - Free, Secure & Easy Web-Based Text Editor</title>
+    <meta name="description" content="Your go-to Online Notepad for quick notes. Free, secure, responsive, and easy to use. No installation required. Save, edit, and manage your text effortlessly.">
+    <meta name="keywords" content="online notepad, free notepad, web notepad, text editor, online editor, notes, quick notes, digital notepad, browser notepad, simple text editor">
+    <link rel="canonical" href="https://yourdomain.com/notepad.html"> <!-- SEO: IMPORTANT: Replace with your actual URL -->
+    <meta name="robots" content="index, follow">
+
+    <!-- SEO: Favicon - Replace 'favicon.ico' and 'logo192.png', 'logo512.png' with your actual icon files -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="logo192.png"> <!-- For Apple devices -->
+    <link rel="manifest" href="manifest.json"> <!-- For Progressive Web App (PWA) capabilities - create this file -->
+
+    <!-- SEO: Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/notepad.html"> <!-- SEO: IMPORTANT: Replace with your actual URL -->
+    <meta property="og:title" content="Online Notepad - Free, Secure & Easy Web-Based Text Editor">
+    <meta property="og:description" content="Your go-to Online Notepad for quick notes. Free, secure, responsive, and easy to use. No installation required. Save, edit, and manage your text effortlessly.">
+    <meta property="og:image" content="https://yourdomain.com/online-notepad-preview.jpg"> <!-- SEO: IMPORTANT: Replace with a URL to a preview image (e.g., 1200x630px) -->
+    <meta property="og:site_name" content="Online Notepad">
+
+    <!-- SEO: Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://yourdomain.com/notepad.html"> <!-- SEO: IMPORTANT: Replace with your actual URL -->
+    <meta name="twitter:title" content="Online Notepad - Free, Secure & Easy Web-Based Text Editor">
+    <meta name="twitter:description" content="Your go-to Online Notepad for quick notes. Free, secure, responsive, and easy to use. No installation required. Save, edit, and manage your text effortlessly.">
+    <meta name="twitter:image" content="https://yourdomain.com/online-notepad-preview.jpg"> <!-- SEO: IMPORTANT: Replace with a URL to a preview image -->
+    <!-- <meta name="twitter:creator" content="@YourTwitterHandle"> --> <!-- Optional: Your Twitter handle -->
+
+    <!-- SEO: Schema.org markup for WebApplication (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Online Notepad",
+      "alternateName": "Free Web Notepad",
+      "description": "A free, secure, and responsive online notepad for quick note-taking, editing, and saving directly in your browser. No installation required.",
+      "applicationCategory": "ProductivityApplication",
+      "operatingSystem": "Web browser",
+      "url": "https://yourdomain.com/notepad.html", /* SEO: IMPORTANT: Replace with your actual URL */
+      "screenshot": "https://yourdomain.com/online-notepad-screenshot.jpg", /* SEO: IMPORTANT: Replace with a URL to a screenshot */
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "browserRequirements": "Requires a modern web browser with JavaScript enabled.",
+      "featureList": [
+        "Text Editing",
+        "File Save (.txt)",
+        "File Open (.txt, .md, etc.)",
+        "Local Storage Autosave",
+        "Font Customization",
+        "Word Count",
+        "Character Count",
+        "Print Functionality",
+        "Fullscreen Mode",
+        "Undo/Redo",
+        "Cut/Copy/Paste"
+      ],
+      "creator": {
+        "@type": "Organization", /* Or "Person" if it's an individual project */
+        "name": "Your Brand/Name" /* SEO: IMPORTANT: Replace with your brand or name */
+      }
+    }
+    </script>
+
     <style>
         /* Basic Reset and Body Styling */
         * {
@@ -49,6 +114,7 @@
 
         .notepad-header h1 {
             font-size: 1.8rem; /* Responsive font size */
+            color: #333; /* Slightly darker for better contrast */
         }
 
         /* Menu Bar */
@@ -69,6 +135,7 @@
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
+            color: #444; /* Menu item text color */
         }
 
         .menu-item:hover {
@@ -97,6 +164,7 @@
             border-radius: 4px;
             padding: 3px;
             flex-shrink: 0; /* Prevent shrinking */
+            color: #555; /* Icon color */
         }
 
         .toolbar-item:hover {
@@ -106,6 +174,7 @@
         .toolbar-item svg {
             width: 18px; /* Slightly larger icons */
             height: 18px; /* Slightly larger icons */
+            stroke: currentColor; /* Inherit color from parent .toolbar-item */
         }
 
 
@@ -138,6 +207,7 @@
             cursor: pointer;
             font-size: 14px;
             width: 100%; /* Make select fill the dropdown container */
+            color: #333;
         }
 
         /* Content Area (Text Editor) */
@@ -159,6 +229,11 @@
             font-size: 16px;
             line-height: 1.5;
             padding: 0; /* Remove default padding */
+            color: #222; /* Editor text color */
+        }
+
+        #editor::placeholder { /* Style placeholder text */
+            color: #aaa;
         }
 
         /* Status Bar */
@@ -172,21 +247,6 @@
             color: #666;
             flex-shrink: 0; /* Prevent shrinking */
         }
-
-        /* Fullscreen Toggle (Optional, if not in toolbar) */
-        /* .fullscreen-toggle {
-            position: absolute;
-            right: 20px;
-            top: 20px;
-            cursor: pointer;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 4px;
-            padding: 5px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-        } */
 
         /* Dropdown Menus */
         .dropdown-menu {
@@ -214,6 +274,7 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #f5f5f5;
+            color: #333; /* Dropdown item text color */
         }
 
         .dropdown-item:last-child {
@@ -235,18 +296,20 @@
             max-width: 80%;
             z-index: 1000;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            transition: all 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Added transform for smoother entry/exit */
             opacity: 0;
+            transform: translateY(20px); /* Start slightly offset for animation */
             pointer-events: none; /* Allow clicks to pass through when hidden */
         }
 
         .notification.show {
             opacity: 1;
+            transform: translateY(0); /* Animate to original position */
             pointer-events: auto; /* Enable clicks when shown */
         }
 
         .notification.success { background-color: #4CAF50; }
-        .notification.error { background-color: #F4436A; } /* Changed from F4436 to F4436A for opacity */
+        .notification.error { background-color: #F44336; } /* Standard red, F4436A is not a standard hex */
         .notification.warning { background-color: #FF9800; }
         .notification.info { background-color: #2196F3; }
 
@@ -266,101 +329,96 @@
         }
 
         .fullscreen .content-area {
-             /* Recalculate height based on known element heights */
-             /* Approximate heights: header ~40px, menu ~30px, toolbar ~40px, status ~20px. */
-             /* Use CSS variables for better maintainability if needed */
-             height: calc(100vh - 40px - 30px - 40px - 20px);
-             display: flex; /* Ensure flex layout for textarea */
+             height: calc(100vh - 40px - 30px - 40px - 20px); /* Approximate, adjust if needed */
+             display: flex;
              flex-direction: column;
-             padding: 10px; /* Add back content padding */
+             padding: 10px;
         }
 
          .fullscreen #editor {
              width: 100%;
-             height: 100%; /* Fill the content area in fullscreen */
+             height: 100%;
          }
 
         /* Responsive Adjustments */
         @media (max-width: 768px) {
             body {
-                padding: 10px; /* Reduce padding on smaller screens */
+                padding: 10px;
             }
 
             .notepad-container {
-                min-height: 95vh; /* Make notepad take more height on smaller screens */
+                min-height: 95vh;
             }
 
             .notepad-header h1 {
-                font-size: 1.3rem; /* Smaller header font */
+                font-size: 1.3rem;
             }
 
             .menu-bar {
-                overflow-x: auto; /* Enable horizontal scrolling for menu items */
-                white-space: nowrap; /* Prevent wrapping */
+                overflow-x: auto;
+                white-space: nowrap;
                 padding: 5px;
-                -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-                justify-content: flex-start; /* Align items to the start */
+                -webkit-overflow-scrolling: touch;
+                justify-content: flex-start;
             }
 
             .menu-item {
                  padding: 5px 8px;
-                 margin-right: 5px; /* Adjust spacing */
-                 flex-shrink: 0; /* Prevent shrinking */
+                 margin-right: 5px;
+                 flex-shrink: 0;
             }
 
             .toolbar {
-                flex-wrap: wrap; /* Allow wrapping */
-                justify-content: center; /* Center items when wrapped */
-                gap: 8px; /* Increase gap */
-                padding: 8px 5px; /* Adjust padding */
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+                padding: 8px 5px;
             }
 
             .toolbar-item {
-                 width: 35px; /* Larger touch target */
-                 height: 35px; /* Larger touch target */
+                 width: 35px;
+                 height: 35px;
                  padding: 5px;
             }
 
             .toolbar-item svg {
-                width: 20px; /* Larger icons */
-                height: 20px; /* Larger icons */
+                width: 20px;
+                height: 20px;
             }
 
             .toolbar-separator {
-                height: 30px; /* Adjust height */
-                margin: 0 3px; /* Adjust margin */
+                height: 30px;
+                margin: 0 3px;
             }
 
             .dropdown {
                 margin: 5px 3px;
-                flex-grow: 1; /* Allow growth */
-                max-width: 48%; /* Max width for dropdowns when wrapped */
-                min-width: 100px; /* Minimum width */
+                flex-grow: 1;
+                max-width: 48%;
+                min-width: 100px;
             }
 
              .dropdown select {
-                font-size: 13px; /* Smaller font size */
+                font-size: 13px;
              }
 
             .status-bar {
-                font-size: 11px; /* Smaller status bar font */
+                font-size: 11px;
                  padding: 5px 8px;
             }
 
             .dropdown-menu {
-                position: fixed; /* Fixed position for mobile */
+                position: fixed;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 90%; /* Wider menu */
-                max-width: 350px; /* Max width */
-                max-height: 70vh; /* Max height */
+                width: 90%;
+                max-width: 350px;
+                max-height: 70vh;
                 box-shadow: 0 5px 20px rgba(0,0,0,0.3);
                 border-radius: 8px;
-                box-sizing: border-box;
             }
 
-            /* Add a backdrop for fixed dropdown */
             .dropdown-menu::before {
                 content: '';
                 position: fixed;
@@ -368,14 +426,14 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(0,0,0,0.5); /* Darker backdrop */
-                z-index: -1; /* Behind the menu */
+                background: rgba(0,0,0,0.5);
+                z-index: -1;
             }
 
             .notification {
                 bottom: 10px;
                 right: 10px;
-                max-width: 90%; /* Wider notification */
+                max-width: 90%;
                 padding: 10px 15px;
                 font-size: 14px;
             }
@@ -387,7 +445,7 @@
             }
 
             .toolbar {
-                gap: 5px; /* Smaller gap */
+                gap: 5px;
             }
 
             .toolbar-item {
@@ -402,19 +460,19 @@
             }
 
             .dropdown {
-                 max-width: 100%; /* Allow dropdowns to take full width when wrapped */
+                 max-width: 100%;
                  margin: 3px 0;
             }
 
             .status-bar {
-                flex-direction: column; /* Stack counts vertically */
+                flex-direction: column;
                 align-items: center;
                 gap: 3px;
             }
 
             .dropdown-menu {
-                 width: 95%; /* Even wider menu */
-                 max-width: none; /* No max width */
+                 width: 95%;
+                 max-width: none;
             }
         }
 
@@ -427,16 +485,22 @@
                 padding: 0;
                 background: white;
                 box-shadow: none;
+                color: #000 !important; /* Ensure text is black for printing */
             }
 
-            .menu-bar, .toolbar, .status-bar, .fullscreen-toggle {
+            .notepad-header h1, #editor {
+                color: #000 !important; /* Ensure important text is black */
+            }
+
+            .menu-bar, .toolbar, .status-bar, .fullscreen-toggle, .notification { /* Hide notifications too */
                 display: none !important;
             }
 
             .content-area, #editor {
                 height: auto;
                 border: none;
-                overflow: visible; /* Allow content to flow onto multiple pages */
+                overflow: visible;
+                background-color: white !important;
             }
 
             .notepad-header {
@@ -449,91 +513,92 @@
 </head>
 <body>
     <div class="notepad-container">
-        <div class="notepad-header">
+        <header class="notepad-header"> <!-- Changed div to header for semantics -->
             <h1>Online Notepad</h1>
-        </div>
+        </header>
 
-        <div class="menu-bar">
-            <div class="menu-item">File</div>
-            <div class="menu-item">Edit</div>
-            <div class="menu-item">Insert</div>
-            <div class="menu-item">View</div>
-            <div class="menu-item">Help</div>
-        </div>
+        <nav class="menu-bar" aria-label="Main Menu"> <!-- Changed div to nav for semantics -->
+            <div class="menu-item" role="button" aria-haspopup="true">File</div>
+            <div class="menu-item" role="button" aria-haspopup="true">Edit</div>
+            <div class="menu-item" role="button" aria-haspopup="true">Insert</div>
+            <div class="menu-item" role="button" aria-haspopup="true">View</div>
+            <div class="menu-item" role="button" aria-haspopup="true">Help</div>
+        </nav>
 
-        <div class="toolbar">
-            <div class="toolbar-item" title="New document" data-action="new">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <div class="toolbar" role="toolbar" aria-label="Formatting Toolbar">
+            <button class="toolbar-item" title="New document" data-action="new" aria-label="New document">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
                     <polyline points="14 2 14 8 20 8"></polyline>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Open file" data-action="open">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Open file" data-action="open" aria-label="Open file">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Save" data-action="save">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Save" data-action="save" aria-label="Save document">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"></path>
                     <polyline points="17 21 17 13 7 13 7 21"></polyline>
                     <polyline points="7 3 7 8 15 8"></polyline>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Print" data-action="print">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Print" data-action="print" aria-label="Print document">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <polyline points="6 9 6 2 18 2 18 9"></polyline>
                     <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
                     <rect x="6" y="14" width="12" height="8"></rect>
                 </svg>
-            </div>
-            <div class="toolbar-separator"></div>
-            <div class="toolbar-item" title="Cut" data-action="cut">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <div class="toolbar-separator" role="separator"></div>
+            <button class="toolbar-item" title="Cut" data-action="cut" aria-label="Cut selection">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <circle cx="6" cy="6" r="3"></circle>
                     <circle cx="6" cy="18" r="3"></circle>
                     <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
                     <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
                     <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Copy" data-action="copy">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Copy" data-action="copy" aria-label="Copy selection">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                     <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Paste" data-action="paste">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Paste" data-action="paste" aria-label="Paste from clipboard">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                     <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                 </svg>
-            </div>
-            <div class="toolbar-separator"></div>
-            <div class="toolbar-item" title="Undo" data-action="undo">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <div class="toolbar-separator" role="separator"></div>
+            <button class="toolbar-item" title="Undo" data-action="undo" aria-label="Undo last action">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M3 10h10a8 8 0 1 1 0 16H3"></path>
                     <path d="M3 10l6-6"></path>
                     <path d="M3 10l6 6"></path>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Redo" data-action="redo">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Redo" data-action="redo" aria-label="Redo last action">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <path d="M21 10H11a8 8 0 1 0 0 16h10"></path>
                     <path d="M21 10l-6-6"></path>
                     <path d="M21 10l-6 6"></path>
                 </svg>
-            </div>
-            <div class="toolbar-separator"></div>
-            <div class="toolbar-item" title="Find" data-action="find">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <div class="toolbar-separator" role="separator"></div>
+            <button class="toolbar-item" title="Find" data-action="find" aria-label="Find text">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
-            </div>
-            <div class="toolbar-separator"></div>
+            </button>
+            <div class="toolbar-separator" role="separator"></div>
             <div class="dropdown">
-                <select id="font-family">
+                <label for="font-family" class="visually-hidden">Font Family</label> <!-- Accessibility -->
+                <select id="font-family" aria-label="Font Family">
                     <option value="Arial">Font Family</option>
                     <option value="Arial">Arial</option>
                     <option value="Times New Roman">Times New Roman</option>
@@ -546,7 +611,8 @@
                 </select>
             </div>
             <div class="dropdown">
-                <select id="font-size">
+                <label for="font-size" class="visually-hidden">Font Size</label> <!-- Accessibility -->
+                <select id="font-size" aria-label="Font Size">
                     <option value="16">Font Sizes</option>
                     <option value="10">10</option>
                     <option value="12">12</option>
@@ -559,40 +625,55 @@
                     <option value="32">32</option>
                 </select>
             </div>
-             <div class="toolbar-item" title="Zoom In" data-action="zoomIn">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+             <button class="toolbar-item" title="Zoom In" data-action="zoomIn" aria-label="Zoom In">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     <line x1="11" y1="8" x2="11" y2="14"></line>
                     <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Zoom Out" data-action="zoomOut">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Zoom Out" data-action="zoomOut" aria-label="Zoom Out">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     <line x1="8" y1="11" x2="14" y2="11"></line>
                 </svg>
-            </div>
-            <div class="toolbar-item" title="Toggle Full Screen" data-action="fullscreen">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            </button>
+            <button class="toolbar-item" title="Toggle Full Screen" data-action="fullscreen" aria-label="Toggle Full Screen">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true" focusable="false">
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <polyline points="9 21 3 21 3 15"></polyline>
                     <line x1="21" y1="3" x2="14" y2="10"></line>
                     <line x1="3" y1="21" x2="10" y2="14"></line>
                 </svg>
-            </div>
+            </button>
         </div>
 
-        <div class="content-area">
-            <textarea id="editor" placeholder="Type your text here..."></textarea>
-        </div>
+        <main class="content-area"> <!-- Changed div to main for semantics -->
+            <label for="editor" class="visually-hidden">Text Editor</label> <!-- Accessibility -->
+            <textarea id="editor" placeholder="Type your text here..." aria-label="Main text editor"></textarea>
+        </main>
 
-        <div class="status-bar">
-            <div class="word-count">Words: 0</div>
-            <div class="char-count">Characters: 0</div>
-        </div>
+        <footer class="status-bar"> <!-- Changed div to footer for semantics -->
+            <div class="word-count" aria-live="polite">Words: 0</div>
+            <div class="char-count" aria-live="polite">Characters: 0</div>
+        </footer>
     </div>
+
+    <!-- Visually hidden class for accessibility labels -->
+    <style>
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            padding: 0;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+    </style>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -601,385 +682,267 @@
             const charCount = document.querySelector('.char-count');
             const fontFamilySelect = document.getElementById('font-family');
             const fontSizeSelect = document.getElementById('font-size');
-            const toolbarItems = document.querySelectorAll('.toolbar-item');
+            const toolbarItems = document.querySelectorAll('.toolbar-item'); // Will now select buttons
             const menuItems = document.querySelectorAll('.menu-item');
             const notepadContainer = document.querySelector('.notepad-container');
 
-            let currentFontSize = parseInt(localStorage.getItem('notepad-font-size') || '16'); // Default to 16 if not saved
+            let currentFontSize = parseInt(localStorage.getItem('notepad-font-size') || '16');
 
-            // Update word and character count
             function updateCounts() {
                 const text = editor.value;
-                // Split by whitespace, filter out empty strings
                 const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).filter(word => word !== '').length;
                 const chars = text.length;
-
                 wordCount.textContent = `Words: ${words}`;
                 charCount.textContent = `Characters: ${chars}`;
             }
 
-            // --- Text Formatting and Actions ---
-
-            // Execute a document command (like cut, copy, paste, undo, redo)
             function formatText(command, value = null) {
-                // execCommand is deprecated but still widely supported for basic actions
                 try {
                      document.execCommand(command, false, value);
                 } catch (e) {
                     console.error(`Error executing command ${command}:`, e);
                     showNotification(`Action "${command}" failed. Your browser might not support it.`, 'error');
                 }
-                editor.focus(); // Keep focus on the editor after action
+                editor.focus();
             }
 
-            // Change font family
             fontFamilySelect.addEventListener('change', function() {
                 editor.style.fontFamily = this.value;
                 localStorage.setItem('notepad-font-family', this.value);
             });
 
-            // Change font size
             fontSizeSelect.addEventListener('change', function() {
-                currentFontSize = parseInt(this.value); // Update current size
+                currentFontSize = parseInt(this.value);
                 editor.style.fontSize = currentFontSize + 'px';
                 localStorage.setItem('notepad-font-size', currentFontSize);
             });
 
-            // Load saved font preferences
             function loadFontPreferences() {
                 const savedFontFamily = localStorage.getItem('notepad-font-family');
                 const savedFontSize = localStorage.getItem('notepad-font-size');
 
                 if (savedFontFamily) {
                     editor.style.fontFamily = savedFontFamily;
-                    // Set the select value if it exists in the options
                     if ([...fontFamilySelect.options].some(option => option.value === savedFontFamily)) {
                          fontFamilySelect.value = savedFontFamily;
                     }
                 }
 
                 if (savedFontSize) {
-                    currentFontSize = parseInt(savedFontSize); // Load saved size
+                    currentFontSize = parseInt(savedFontSize);
                     editor.style.fontSize = currentFontSize + 'px';
-                     // Set the select value if it exists in the options
                     if ([...fontSizeSelect.options].some(option => option.value === savedFontSize)) {
                          fontSizeSelect.value = savedFontSize;
                     }
+                } else { // Set default if nothing is saved for font size
+                    editor.style.fontSize = currentFontSize + 'px';
+                    fontSizeSelect.value = currentFontSize.toString();
                 }
             }
 
-            // Insert text at cursor position
             function insertTextAtCursor(text) {
                 const startPos = editor.selectionStart;
                 const endPos = editor.selectionEnd;
                 const value = editor.value;
-
-                // Insert text
                 editor.value = value.substring(0, startPos) + text + value.substring(endPos);
-
-                // Move cursor to the end of the inserted text
                 editor.selectionStart = editor.selectionEnd = startPos + text.length;
-
                 editor.focus();
-                updateCounts(); // Update counts after insertion
+                updateCounts();
             }
 
-            // --- File Actions ---
-
-            // New document
             function newDocument() {
-                if (editor.value.trim() !== '') {
-                    const confirmNew = confirm('You have unsaved changes. Do you want to create a new document?');
-                    if (!confirmNew) {
-                        return; // Stop if user cancels
-                    }
+                if (editor.value.trim() !== '' && !confirm('You have unsaved changes. Do you want to create a new document?')) {
+                    return;
                 }
-                editor.value = ''; // Clear the editor
+                editor.value = '';
                 updateCounts();
-                localStorage.removeItem('notepad-content'); // Clear saved content
+                localStorage.removeItem('notepad-content');
                 showNotification('New document created.', 'info');
             }
 
-            // Open file
             function openFile() {
                 const input = document.createElement('input');
                 input.type = 'file';
-                // Accept common text/code file types
-                input.accept = '.txt, .md, .html, .css, .js, .json, .xml, .log, .csv';
-                input.style.display = 'none'; // Hide the input element
+                input.accept = '.txt, .md, .html, .css, .js, .json, .xml, .log, .csv, text/*';
+                input.style.display = 'none';
                 document.body.appendChild(input);
-
                 input.onchange = e => {
                     const file = e.target.files[0];
                     if (!file) {
-                        document.body.removeChild(input); // Clean up the input
-                        return;
+                        document.body.removeChild(input); return;
                     }
-
                     const reader = new FileReader();
-
                     reader.onload = function(e) {
                         editor.value = e.target.result;
                         updateCounts();
-                        document.body.removeChild(input); // Clean up the input
+                        document.body.removeChild(input);
                         showNotification(`File "${file.name}" loaded successfully!`, 'success');
                     };
-
                     reader.onerror = function() {
                         showNotification('Error reading file!', 'error');
-                        document.body.removeChild(input); // Clean up the input
+                        document.body.removeChild(input);
                     };
-
-                    // Read the file as text
                     reader.readAsText(file);
                 };
-
-                // Trigger the file input click
                 input.click();
             }
 
-            // Save document (as a .txt file)
             function saveDocument() {
                 const content = editor.value;
-                const blob = new Blob([content], { type: 'text/plain' });
+                const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
                 const a = document.createElement('a');
-                const fileName = 'notepad_note.txt'; // Default file name
-
+                const now = new Date();
+                const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
+                const fileName = `notepad_note_${timestamp}.txt`;
                 a.href = URL.createObjectURL(blob);
                 a.download = fileName;
-                a.style.display = 'none'; // Hide the link
+                a.style.display = 'none';
                 document.body.appendChild(a);
-
-                a.click(); // Trigger the download
-
-                URL.revokeObjectURL(a.href); // Clean up the URL object
-                document.body.removeChild(a); // Clean up the link
-
+                a.click();
+                URL.revokeObjectURL(a.href);
+                document.body.removeChild(a);
                 showNotification('Document saved as ' + fileName, 'success');
             }
 
-            // --- Edit Actions ---
-
-            // Select all text
             function selectAll() {
                 editor.select();
                 editor.focus();
             }
 
-            // Find text (basic browser find)
             function findText() {
-                 // This will trigger the browser's built-in find functionality
-                 // A more advanced find would require a custom UI and search logic
                  showNotification('Using browser\'s built-in Find. Press Ctrl+F (Cmd+F on Mac).', 'info');
-                 // Optionally, you could open a custom find dialog here
             }
 
-            // --- Insert Actions ---
-
-            // Insert current date
             function insertDate() {
                 const today = new Date();
-                const date = today.toLocaleDateString(); // Format based on user's locale
+                const date = today.toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric' });
                 insertTextAtCursor(date);
                 showNotification('Date inserted.', 'info');
             }
 
-            // Insert current time
             function insertTime() {
                 const now = new Date();
-                const time = now.toLocaleTimeString(); // Format based on user's locale
+                const time = now.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' });
                 insertTextAtCursor(time);
                 showNotification('Time inserted.', 'info');
             }
 
-            // --- View Actions ---
-
-            // Toggle Full Screen
             function toggleFullscreen() {
                 if (!document.fullscreenElement) {
-                    // Enter fullscreen
-                    if (notepadContainer.requestFullscreen) {
-                        notepadContainer.requestFullscreen();
-                    } else if (notepadContainer.mozRequestFullScreen) { /* Firefox */
-                        notepadContainer.mozRequestFullScreen();
-                    } else if (notepadContainer.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-                        notepadContainer.webkitRequestFullscreen();
-                    } else if (notepadContainer.msRequestFullscreen) { /* IE/Edge */
-                        notepadContainer.msRequestFullscreen();
-                    }
+                    if (notepadContainer.requestFullscreen) notepadContainer.requestFullscreen();
+                    else if (notepadContainer.mozRequestFullScreen) notepadContainer.mozRequestFullScreen();
+                    else if (notepadContainer.webkitRequestFullscreen) notepadContainer.webkitRequestFullscreen();
+                    else if (notepadContainer.msRequestFullscreen) notepadContainer.msRequestFullscreen();
                 } else {
-                    // Exit fullscreen
-                    if (document.exitFullscreen) {
-                        document.exitFullscreen();
-                    } else if (document.mozCancelFullScreen) { /* Firefox */
-                        document.mozCancelFullScreen();
-                    } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
-                        document.webkitExitFullscreen();
-                    } else if (document.msExitFullscreen) { /* IE/Edge */
-                        document.msExitFullscreen();
-                    }
+                    if (document.exitFullscreen) document.exitFullscreen();
+                    else if (document.mozCancelFullScreen) document.mozCancelFullScreen();
+                    else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+                    else if (document.msExitFullscreen) document.msExitFullscreen();
                 }
             }
 
-            // Zoom In
             function zoomIn() {
-                currentFontSize += 2; // Increase font size by 2px
+                currentFontSize += 2;
                 editor.style.fontSize = currentFontSize + 'px';
-                localStorage.setItem('notepad-font-size', currentFontSize); // Save new size
+                localStorage.setItem('notepad-font-size', currentFontSize);
+                fontSizeSelect.value = currentFontSize.toString(); // Update select
                  showNotification('Zoomed in.', 'info');
             }
 
-            // Zoom Out
             function zoomOut() {
-                if (currentFontSize > 6) { // Prevent zooming out too much
-                    currentFontSize -= 2; // Decrease font size by 2px
+                if (currentFontSize > 6) {
+                    currentFontSize -= 2;
                     editor.style.fontSize = currentFontSize + 'px';
-                    localStorage.setItem('notepad-font-size', currentFontSize); // Save new size
+                    localStorage.setItem('notepad-font-size', currentFontSize);
+                    fontSizeSelect.value = currentFontSize.toString(); // Update select
                     showNotification('Zoomed out.', 'info');
                 } else {
                     showNotification('Cannot zoom out further.', 'warning');
                 }
             }
 
-            // --- Help Actions ---
-
-            // Show Keyboard Shortcuts
             function showKeyboardShortcuts() {
-                const shortcuts = `
-Keyboard Shortcuts:
-New: Ctrl+N
-Open: Ctrl+O
-Save: Ctrl+S
-Print: Ctrl+P
-Undo: Ctrl+Z
-Redo: Ctrl+Y
-Cut: Ctrl+X
-Copy: Ctrl+C
-Paste: Ctrl+V
-Select All: Ctrl+A
-Toggle Full Screen: F11
-Zoom In: Ctrl++
-Zoom Out: Ctrl+-
-                `;
-                // Using alert for simplicity, a modal would be better
-                alert(shortcuts);
+                alert(`Keyboard Shortcuts:\nNew: Ctrl+N\nOpen: Ctrl+O\nSave: Ctrl+S\nPrint: Ctrl+P\nUndo: Ctrl+Z\nRedo: Ctrl+Y\nCut: Ctrl+X\nCopy: Ctrl+C\nPaste: Ctrl+V\nSelect All: Ctrl+A\nToggle Full Screen: F11\nZoom In: Ctrl++\nZoom Out: Ctrl+-`);
             }
 
-            // Show About information
             function showAbout() {
-                const aboutInfo = `
-Online Notepad
-Version 1.0
-Created by Gemini
-
-This is a simple, free, and responsive online notepad.
-Your notes are saved locally in your browser.
-                `;
-                 // Using alert for simplicity
-                alert(aboutInfo);
+                alert(`Online Notepad\nVersion 1.1 (SEO Enhanced)\n\nThis is a simple, free, and responsive online notepad.\nYour notes are saved locally in your browser via Local Storage.`);
             }
 
-
-            // --- Event Listeners ---
-
-            // Update counts on input
             editor.addEventListener('input', updateCounts);
+            
+            let saveTimeout;
+            function debouncedSaveToLocalStorage() {
+                clearTimeout(saveTimeout);
+                saveTimeout = setTimeout(saveToLocalStorage, 1000); // Save 1 sec after last input
+            }
+            editor.addEventListener('input', debouncedSaveToLocalStorage);
 
-            // Initialize counts on load
-            updateCounts();
-
-            // Save to local storage periodically (every 3 seconds)
-            setInterval(saveToLocalStorage, 3000);
-
-            // Save to local storage on page unload (more reliable)
             window.addEventListener('beforeunload', saveToLocalStorage);
 
-            // Load content and preferences on page load
-            loadFromLocalStorage();
-            loadFontPreferences();
-
-
-            // Handle Toolbar Item Clicks
             toolbarItems.forEach(item => {
                 item.addEventListener('click', function() {
                     const action = this.getAttribute('data-action');
                     switch (action) {
-                        case 'new':
-                            newDocument();
-                            break;
-                        case 'open':
-                            openFile();
-                            break;
-                        case 'save':
-                            saveDocument();
-                            break;
-                        case 'print':
-                            window.print(); // Use browser print functionality
-                            break;
-                        case 'cut':
-                            formatText('cut');
-                            break;
-                        case 'copy':
-                            formatText('copy');
-                            break;
+                        case 'new': newDocument(); break;
+                        case 'open': openFile(); break;
+                        case 'save': saveDocument(); break;
+                        case 'print': window.print(); break;
+                        case 'cut': formatText('cut'); break;
+                        case 'copy': formatText('copy'); break;
                         case 'paste':
-                            // Note: document.execCommand('paste') has security restrictions
-                            // It might not work in all browsers or contexts.
-                            // A better approach involves using the async Clipboard API,
-                            // but that requires user permission and is more complex.
-                            formatText('paste');
-                            showNotification('Paste action attempted. Browser security may prevent programmatic paste.', 'warning');
+                            if (navigator.clipboard && navigator.clipboard.readText) {
+                                navigator.clipboard.readText()
+                                    .then(text => {
+                                        insertTextAtCursor(text);
+                                        showNotification('Pasted from clipboard.', 'success');
+                                    })
+                                    .catch(err => {
+                                        console.error('Failed to read clipboard contents: ', err);
+                                        formatText('paste'); // Fallback to execCommand
+                                        showNotification('Paste action attempted. Browser security may prevent programmatic paste. Try Ctrl+V.', 'warning');
+                                    });
+                            } else {
+                                formatText('paste'); // Fallback for older browsers
+                                showNotification('Paste action attempted. Browser security may prevent programmatic paste. Try Ctrl+V.', 'warning');
+                            }
                             break;
-                        case 'undo':
-                            formatText('undo');
-                            break;
-                        case 'redo':
-                            formatText('redo');
-                            break;
-                        case 'find':
-                            findText();
-                            break;
-                        case 'zoomIn':
-                            zoomIn();
-                            break;
-                        case 'zoomOut':
-                            zoomOut();
-                            break;
-                        case 'fullscreen':
-                            toggleFullscreen();
-                            break;
-                        default:
-                            console.warn('Unknown toolbar action:', action);
+                        case 'undo': formatText('undo'); break;
+                        case 'redo': formatText('redo'); break;
+                        case 'find': findText(); break;
+                        case 'zoomIn': zoomIn(); break;
+                        case 'zoomOut': zoomOut(); break;
+                        case 'fullscreen': toggleFullscreen(); break;
+                        default: console.warn('Unknown toolbar action:', action);
                     }
                 });
             });
 
-
-            // --- Dropdown Menu Logic ---
-
-            // Setup menu items with their respective actions
             const menuOptions = {
                 'File': [
                     { label: 'New', action: newDocument, shortcut: 'Ctrl+N' },
-                    { label: 'Open', action: openFile, shortcut: 'Ctrl+O' },
-                    { label: 'Save', action: saveDocument, shortcut: 'Ctrl+S' },
-                    { label: 'Print', action: () => window.print(), shortcut: 'Ctrl+P' }
+                    { label: 'Open...', action: openFile, shortcut: 'Ctrl+O' },
+                    { label: 'Save As...', action: saveDocument, shortcut: 'Ctrl+S' },
+                    { label: 'Print...', action: () => window.print(), shortcut: 'Ctrl+P' }
                 ],
                 'Edit': [
                     { label: 'Undo', action: () => formatText('undo'), shortcut: 'Ctrl+Z' },
                     { label: 'Redo', action: () => formatText('redo'), shortcut: 'Ctrl+Y' },
+                    { type: 'separator' },
                     { label: 'Cut', action: () => formatText('cut'), shortcut: 'Ctrl+X' },
                     { label: 'Copy', action: () => formatText('copy'), shortcut: 'Ctrl+C' },
                     { label: 'Paste', action: () => {
-                         formatText('paste');
-                         showNotification('Paste action attempted. Browser security may prevent programmatic paste.', 'warning');
+                        if (navigator.clipboard && navigator.clipboard.readText) {
+                            navigator.clipboard.readText().then(text => insertTextAtCursor(text)).catch(err => { formatText('paste'); showNotification('Paste failed. Try Ctrl+V.', 'warning');});
+                        } else { formatText('paste'); showNotification('Paste failed. Try Ctrl+V.', 'warning');}
                     }, shortcut: 'Ctrl+V' },
+                    { type: 'separator' },
                     { label: 'Select All', action: selectAll, shortcut: 'Ctrl+A' }
                 ],
                 'Insert': [
                     { label: 'Date', action: insertDate },
                     { label: 'Time', action: insertTime },
-                    { label: 'Special Character (©)', action: () => insertTextAtCursor('©') } // Example special character
+                    { label: 'Special Character (©)', action: () => insertTextAtCursor('©') }
                 ],
                 'View': [
                     { label: 'Toggle Full Screen', action: toggleFullscreen, shortcut: 'F11' },
@@ -988,124 +951,94 @@ Your notes are saved locally in your browser.
                 ],
                 'Help': [
                     { label: 'Keyboard Shortcuts', action: showKeyboardShortcuts },
-                    { label: 'About', action: showAbout }
+                    { label: 'About Online Notepad', action: showAbout }
                 ]
             };
 
-            // Create all dropdown menus
-            menuItems.forEach(menuItem => {
-                const menuName = menuItem.textContent.trim();
-                if (menuOptions[menuName]) {
-                    createDropdownMenu(menuItem, menuOptions[menuName]);
-                }
-            });
-
-            // Function to create dropdown menu
             function createDropdownMenu(menuItem, items) {
-                // Create dropdown container
                 const dropdown = document.createElement('div');
                 dropdown.className = 'dropdown-menu';
+                dropdown.setAttribute('role', 'menu'); // Accessibility
 
-                // Add menu items
                 items.forEach(item => {
+                    if (item.type === 'separator') {
+                        const separator = document.createElement('div');
+                        separator.style.height = '1px';
+                        separator.style.backgroundColor = '#e0e0e0';
+                        separator.style.margin = '5px 0';
+                        separator.setAttribute('role', 'separator');
+                        dropdown.appendChild(separator);
+                        return;
+                    }
+
                     const menuOption = document.createElement('div');
                     menuOption.className = 'dropdown-item';
+                    menuOption.setAttribute('role', 'menuitem'); // Accessibility
 
-                    // Create label text
                     const labelSpan = document.createElement('span');
                     labelSpan.textContent = item.label;
                     menuOption.appendChild(labelSpan);
 
-                    // Add shortcut text if available
                     if (item.shortcut) {
                         const shortcutSpan = document.createElement('span');
                         shortcutSpan.textContent = item.shortcut;
                         shortcutSpan.style.marginLeft = 'auto';
+                        shortcutSpan.style.paddingLeft = '20px'; // Ensure space
                         shortcutSpan.style.fontSize = '0.8em';
                         shortcutSpan.style.color = '#666';
                         menuOption.appendChild(shortcutSpan);
                     }
 
-                    // Handle click event
                     menuOption.addEventListener('click', (e) => {
-                        e.stopPropagation(); // Prevent click from closing dropdown immediately
-                        hideDropdown(dropdown); // Hide this dropdown
-                        item.action(); // Perform the action
+                        e.stopPropagation();
+                        hideDropdown(dropdown);
+                        item.action();
                     });
-
                     dropdown.appendChild(menuOption);
                 });
 
-                // Add dropdown to menu item
                 menuItem.appendChild(dropdown);
-                menuItem.style.position = 'relative'; // Needed for absolute positioning of dropdown
+                menuItem.style.position = 'relative';
 
-                // Toggle dropdown on click
                 menuItem.addEventListener('click', (e) => {
-                    e.stopPropagation(); // Prevent click from closing other dropdowns
-
-                    // Check if this dropdown is already visible
-                    const isVisible = dropdown.style.display === 'block';
-
-                    // Hide all dropdowns first
-                    hideAllDropdowns();
-
-                    // If this dropdown wasn't visible, show it
-                    if (!isVisible) {
-                        showDropdown(dropdown);
-                    }
-                });
-
-                 // For mobile/touch devices (using touchend for better compatibility)
-                menuItem.addEventListener('touchend', (e) => {
                     e.stopPropagation();
                     const isVisible = dropdown.style.display === 'block';
                     hideAllDropdowns();
                     if (!isVisible) {
-                        showDropdown(dropdown);
+                        showDropdown(dropdown, menuItem); // Pass menuItem for positioning
+                        dropdown.querySelector('[role="menuitem"]')?.focus(); // Focus first item
+                    }
+                });
+                menuItem.addEventListener('keydown', (e) => { // Keyboard navigation for menu
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        menuItem.click();
                     }
                 });
             }
+            
+            menuItems.forEach(menuItem => {
+                const menuName = menuItem.textContent.trim();
+                if (menuOptions[menuName]) {
+                    createDropdownMenu(menuItem, menuOptions[menuName]);
+                }
+                 menuItem.setAttribute('tabindex', '0'); // Make menu items focusable
+            });
 
-            // Show dropdown with proper positioning
-            function showDropdown(dropdown) {
-                 dropdown.style.display = 'block'; // Show it first to calculate dimensions
-                 dropdown.style.visibility = 'hidden'; // Hide temporarily for measurement
+            function showDropdown(dropdown, menuItem) {
+                 dropdown.style.display = 'block';
+                 dropdown.style.visibility = 'hidden';
 
-                 const menuItem = dropdown.parentElement;
                  const menuRect = menuItem.getBoundingClientRect();
-
                  const dropdownHeight = dropdown.offsetHeight;
                  const dropdownWidth = dropdown.offsetWidth;
-
                  const spaceBelow = window.innerHeight - menuRect.bottom;
                  const spaceRight = window.innerWidth - menuRect.left;
 
-                 // Reset positioning styles
-                 dropdown.style.top = 'auto';
-                 dropdown.style.bottom = 'auto';
-                 dropdown.style.left = 'auto';
-                 dropdown.style.right = 'auto';
+                 dropdown.style.top = 'auto'; dropdown.style.bottom = 'auto';
+                 dropdown.style.left = 'auto'; dropdown.style.right = 'auto';
 
-                 // Position based on available space
-                 if (spaceBelow < dropdownHeight && menuRect.top > dropdownHeight) {
-                     // Not enough space below, but enough space above
-                     dropdown.style.bottom = `${window.innerHeight - menuRect.top}px`;
-                 } else {
-                     // Default position (below)
-                     dropdown.style.top = `${menuRect.bottom}px`;
-                 }
-
-                 if (spaceRight < dropdownWidth) {
-                     // Not enough space to the right, align to the right edge of the menu item
-                     dropdown.style.right = `${window.innerWidth - menuRect.right}px`;
-                 } else {
-                     // Default position (left-aligned)
-                     dropdown.style.left = `${menuRect.left}px`;
-                 }
-
-                // Ensure dropdown is within viewport bounds on small screens (fixed position handling)
-                if (window.innerWidth <= 768) { // Apply fixed positioning logic for smaller screens
+                 if (window.innerWidth <= 768) { // Mobile fixed positioning
                      dropdown.style.position = 'fixed';
                      dropdown.style.top = '50%';
                      dropdown.style.left = '50%';
@@ -1113,55 +1046,53 @@ Your notes are saved locally in your browser.
                      dropdown.style.width = '90%';
                      dropdown.style.maxWidth = '350px';
                      dropdown.style.maxHeight = '70vh';
-                 } else {
-                     dropdown.style.position = 'absolute'; // Revert to absolute for larger screens
+                 } else { // Desktop absolute positioning
+                     dropdown.style.position = 'absolute';
+                     dropdown.style.transform = 'none'; // Reset transform
+                     if (spaceBelow < dropdownHeight && menuRect.top > dropdownHeight) {
+                         dropdown.style.bottom = '100%'; // Position above
+                     } else {
+                         dropdown.style.top = '100%'; // Position below
+                     }
+                     if (menuRect.left + dropdownWidth > window.innerWidth) {
+                         dropdown.style.right = '0'; // Align to right of menu item if overflows
+                     } else {
+                         dropdown.style.left = '0'; // Align to left of menu item
+                     }
                  }
-
-
-                 dropdown.style.visibility = 'visible'; // Make it visible again
+                 dropdown.style.visibility = 'visible';
             }
 
-
-            // Hide dropdown
             function hideDropdown(dropdown) {
-                dropdown.style.display = 'none';
+                if (dropdown) dropdown.style.display = 'none';
             }
 
-            // Hide all dropdowns
             function hideAllDropdowns() {
-                const dropdowns = document.querySelectorAll('.dropdown-menu');
-                dropdowns.forEach(dropdown => {
-                    hideDropdown(dropdown);
-                });
+                document.querySelectorAll('.dropdown-menu').forEach(hideDropdown);
             }
 
-            // Close all dropdowns when clicking elsewhere
             document.addEventListener('click', hideAllDropdowns);
-            // Also handle touch events for mobile
-            document.addEventListener('touchend', hideAllDropdowns);
+            document.addEventListener('keydown', (e) => { // Close dropdowns with Escape key
+                if (e.key === 'Escape') {
+                    hideAllDropdowns();
+                }
+            });
 
 
-            // --- Local Storage ---
-
-            // Save to local storage
             function saveToLocalStorage() {
                 try {
                     localStorage.setItem('notepad-content', editor.value);
-                     // showNotification('Note saved locally.', 'info'); // Optional: show save confirmation
                 } catch (e) {
                     console.error('Error saving to local storage:', e);
-                    showNotification('Could not save note to local storage. Your browser may be in private mode or storage is full.', 'error');
+                    showNotification('Could not save note to local storage. Storage might be full or browser in private mode.', 'error');
                 }
             }
 
-            // Load from local storage
             function loadFromLocalStorage() {
                 try {
                     const savedContent = localStorage.getItem('notepad-content');
-                    if (savedContent !== null) { // Check if item exists
+                    if (savedContent !== null) {
                         editor.value = savedContent;
-                        updateCounts();
-                         // showNotification('Note loaded from local storage.', 'success'); // Optional: show load confirmation
                     }
                 } catch (e) {
                     console.error('Error loading from local storage:', e);
@@ -1169,151 +1100,73 @@ Your notes are saved locally in your browser.
                 }
             }
 
-            // --- Notifications ---
-
-            // Display notification
+            let notificationTimeout;
             function showNotification(message, type = 'info', duration = 3000) {
-                // Remove existing notifications to prevent stacking
+                clearTimeout(notificationTimeout); // Clear existing timeout
                 const existingNotifications = document.querySelectorAll('.notification');
                 existingNotifications.forEach(n => n.remove());
 
                 const notification = document.createElement('div');
-                notification.className = `notification ${type}`; // Add type class for styling
+                notification.className = `notification ${type}`;
                 notification.textContent = message;
+                notification.setAttribute('role', 'alert'); // Accessibility
 
                 document.body.appendChild(notification);
 
-                // Animate in
                 setTimeout(() => {
                     notification.classList.add('show');
-                }, 10); // Small delay to allow CSS transition
+                }, 10);
 
-                // Remove after duration
-                setTimeout(() => {
-                    notification.classList.remove('show'); // Animate out
-                    // Remove element after transition
-                    notification.addEventListener('transitionend', () => {
-                        notification.remove();
-                    });
-                     // Fallback removal if transitionend doesn't fire (e.g., element removed before transition ends)
-                    setTimeout(() => {
-                         if(notification.parentElement) {
-                            notification.remove();
-                         }
-                    }, 500); // Match CSS transition duration
+                notificationTimeout = setTimeout(() => {
+                    notification.classList.remove('show');
+                    notification.addEventListener('transitionend', () => notification.remove(), { once: true });
+                    setTimeout(() => { if(notification.parentElement) notification.remove(); }, 500);
                 }, duration);
             }
 
-            // --- Keyboard Shortcuts ---
-
             document.addEventListener('keydown', function(e) {
+                const isCtrlCmd = e.ctrlKey || e.metaKey;
                 let handled = false;
-
-                // Check for Ctrl/Cmd key
-                const isCtrlCmd = e.ctrlKey || e.metaKey; // metaKey is for Mac Cmd key
 
                 if (isCtrlCmd) {
                     switch (e.key.toLowerCase()) {
-                        case 'n': // Ctrl+N / Cmd+N
-                            e.preventDefault(); // Prevent default browser new tab action
-                            newDocument();
-                            handled = true;
-                            break;
-                        case 'o': // Ctrl+O / Cmd+O
-                            e.preventDefault(); // Prevent default browser open file dialog
-                            openFile();
-                            handled = true;
-                            break;
-                        case 's': // Ctrl+S / Cmd+S
-                            e.preventDefault(); // Prevent default browser save page action
-                            saveDocument();
-                            handled = true;
-                            break;
-                        case 'p': // Ctrl+P / Cmd+P
-                            // Let the browser handle print, no preventDefault here
-                            // window.print();
-                            // handled = true; // Don't mark as handled if browser handles it
-                            break; // Let browser handle print
-                        case 'z': // Ctrl+Z / Cmd+Z
-                            // Let the browser handle undo
-                            // formatText('undo');
-                            // handled = true;
-                            break; // Let browser handle undo
-                        case 'y': // Ctrl+Y / Cmd+Y
-                             // Let the browser handle redo
-                            // formatText('redo');
-                            // handled = true;
-                            break; // Let browser handle redo
-                         case 'x': // Ctrl+X / Cmd+X
-                             // Let the browser handle cut
-                            // formatText('cut');
-                            // handled = true;
-                            break; // Let browser handle cut
-                         case 'c': // Ctrl+C / Cmd+C
-                             // Let the browser handle copy
-                            // formatText('copy');
-                            // handled = true;
-                            break; // Let browser handle copy
-                         case 'v': // Ctrl+V / Cmd+V
-                             // Let the browser handle paste
-                            // formatText('paste');
-                            // handled = true;
-                            break; // Let browser handle paste
-                        case 'a': // Ctrl+A / Cmd+A
-                            e.preventDefault(); // Prevent default browser select all
-                            selectAll();
-                            handled = true;
-                            break;
-                        case '+': // Ctrl++ / Cmd++ (Zoom In)
-                            e.preventDefault(); // Prevent browser zoom
-                            zoomIn();
-                            handled = true;
-                            break;
-                        case '-': // Ctrl+- / Cmd+- (Zoom Out)
-                            e.preventDefault(); // Prevent browser zoom
-                            zoomOut();
-                            handled = true;
-                            break;
-                         case 'f': // Ctrl+F / Cmd+F (Find)
-                            // Let the browser handle find
-                            // findText();
-                            // handled = true;
-                            break; // Let browser handle find
+                        case 'n': newDocument(); handled = true; break;
+                        case 'o': openFile(); handled = true; break;
+                        case 's': saveDocument(); handled = true; break;
+                        // case 'p': /* Let browser handle print */ break;
+                        // case 'z': /* Let browser handle undo */ break;
+                        // case 'y': /* Let browser handle redo */ break;
+                        // case 'x': /* Let browser handle cut */ break;
+                        // case 'c': /* Let browser handle copy */ break;
+                        // case 'v': /* Let browser handle paste */ break;
+                        case 'a': selectAll(); handled = true; break;
+                        case '=': case '+': zoomIn(); handled = true; break; // Ctrl + '+' or Ctrl + '='
+                        case '-': zoomOut(); handled = true; break;
+                        // case 'f': /* Let browser handle find */ break;
                     }
-                } else if (e.key === 'F11') { // F11 for Fullscreen
-                     e.preventDefault(); // Prevent default browser fullscreen
-                     toggleFullscreen();
-                     handled = true;
+                } else if (e.key === 'F11') {
+                     toggleFullscreen(); handled = true;
                 }
 
-
                 if (handled) {
-                    // Stop propagation if the shortcut was handled by our script
-                    // This prevents the browser from also processing it (e.g., opening save dialog)
+                    e.preventDefault();
                     e.stopPropagation();
                 }
             });
 
-            // --- Fullscreen Change Listener ---
-            // Add a class to the container when fullscreen is active
-            document.addEventListener('fullscreenchange', updateFullscreenClass);
-            document.addEventListener('mozfullscreenchange', updateFullscreenClass);
-            document.addEventListener('webkitfullscreenchange', updateFullscreenClass);
-            document.addEventListener('msfullscreenchange', updateFullscreenClass);
-
             function updateFullscreenClass() {
-                if (document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement) {
-                    notepadContainer.classList.add('fullscreen');
-                } else {
-                    notepadContainer.classList.remove('fullscreen');
-                }
+                const isFullscreen = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+                notepadContainer.classList.toggle('fullscreen', !!isFullscreen);
             }
+            ['fullscreenchange', 'mozfullscreenchange', 'webkitfullscreenchange', 'msfullscreenchange'].forEach(event =>
+                document.addEventListener(event, updateFullscreenClass)
+            );
 
-            // --- Initial Load ---
             loadFromLocalStorage();
             loadFontPreferences();
-            updateCounts(); // Ensure counts are correct on load
+            updateCounts();
         });
     </script>
+
 </body>
 </html>
